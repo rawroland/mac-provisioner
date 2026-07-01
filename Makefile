@@ -32,4 +32,4 @@ bootstrap:
 		echo "Installing Ansible via Homebrew..."; \
 		$(BREW) install ansible; \
 	fi
-	@$(GALAXY) collection install -r requirements.yml --upgrade -q
+	@$(GALAXY) collection install -r requirements.yml --upgrade
