@@ -22,9 +22,11 @@ lint:
 	$(ANSIBLE_LINT) playbook.yml
 
 bootstrap:
+	@echo "Caching sudo credentials (required for Homebrew install)..."
+	@sudo -v
 	@if [ ! -f "$(BREW)" ]; then \
 		echo "Installing Homebrew..."; \
-		NONINTERACTIVE=1 /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
+		/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
 	fi
 	@if [ ! -f "$(BREW_PREFIX)/bin/ansible" ]; then \
 		echo "Installing Ansible via Homebrew..."; \
