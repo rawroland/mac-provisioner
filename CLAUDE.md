@@ -19,6 +19,8 @@ All user-facing configuration lives in **`vars/main.yml`**. Edit that file, not 
 | Setting | How to change |
 |---|---|
 | Update Alfred config | Re-export from Alfred, then `cp -r ~/Library/Application\ Support/Alfred/Alfred.alfredpreferences roles/alfred/files/` |
+| Add a VS Code extension | Append to `vscode_extensions` in `roles/vscode/defaults/main.yml` |
+| Change VS Code settings | Edit `roles/vscode/templates/settings.json.j2` |
 | Add a CLI tool | Append to `homebrew_formulae` in `vars/main.yml` |
 | Add a GUI app | Append to `homebrew_casks` in `vars/main.yml` |
 | Change runtime version | Edit `mise_tools.<lang>` in `vars/main.yml` |
@@ -36,7 +38,8 @@ roles/
 ├── kubernetes/   — kubectl, helm, k9s, kubectx
 ├── macos/        — macOS system preferences via `defaults write`
 ├── iterm2/       — iTerm2 Dynamic Profile (green-on-black) + shell integration
-└── alfred/       — Alfred install + preferences bundle from this machine
+├── alfred/       — Alfred install + preferences bundle from this machine
+└── vscode/       — VS Code extensions + cleaned settings.json
 ```
 
 ## Key Design Notes

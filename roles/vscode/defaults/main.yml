@@ -1,0 +1,105 @@
+---
+vscode_extensions:
+  # Git
+  - eamodio.gitlens
+  - github.vscode-pull-request-github
+  - github.vscode-github-actions
+  - gitlab.gitlab-workflow
+
+  # Formatting & linting
+  - esbenp.prettier-vscode
+  - editorconfig.editorconfig
+  - dbaeumer.vscode-eslint
+
+  # Languages — Go
+  - golang.go
+
+  # Languages — PHP
+  - bmewburn.vscode-intelephense-client
+  - junstyle.php-cs-fixer
+  - phlak.simple-php-cs-fixer-3
+  - recca0120.vscode-phpunit
+  - xdebug.php-debug
+  - mehedidracula.php-namespace-resolver
+  - neilbrayfield.php-docblocker
+  - phproberto.vscode-php-getters-setters
+  - sanderronde.phpstan-vscode
+  - muath-ye.composer-intelephense
+
+  # Languages — Ruby
+  - shopify.ruby-lsp
+
+  # Languages — Dart / Flutter
+  - dart-code.dart-code
+  - dart-code.flutter
+
+  # Languages — C/C++
+  - ms-vscode.cpptools
+  - ms-vscode.cpptools-extension-pack
+  - ms-vscode.cpptools-themes
+  - ms-vscode.cpp-devtools
+  - ms-vscode.cmake-tools
+  - ms-vscode.makefile-tools
+
+  # Languages — Nix
+  - bbenoist.nix
+  - jnoortheen.nix-ide
+  - pinage404.nix-extension-pack
+  - arrterian.nix-env-selector
+  - mkhl.direnv
+
+  # Languages — Web / JS
+  - christian-kohler.npm-intellisense
+  - xabikos.javascriptsnippets
+  - firefox-devtools.vscode-firefox-debug
+
+  # Languages — Misc
+  - tamasfe.even-better-toml
+  - redhat.vscode-yaml
+  - nefrob.vscode-just-syntax
+
+  # Frameworks
+  - aki77.rails-db-schema
+  - thenouillet.symfony-vscode
+  - whatwedo.twig
+  - stanislav.vscode-drupal
+
+  # Docker / Containers
+  - docker.docker
+  - ms-azuretools.vscode-docker
+  - ms-azuretools.vscode-containers
+  - ms-vscode-remote.remote-containers
+  - biati.ddev-manager
+
+  # Database
+  - cweijan.vscode-database-client2
+  - cweijan.dbclient-jdbc
+
+  # API / Testing
+  - humao.rest-client
+  - postman.postman-for-vscode
+  - ms-playwright.playwright
+  - zoellner.openapi-preview
+  - wscats.cors-browser
+
+  # Markdown / Docs
+  - yzhang.markdown-all-in-one
+  - davidanson.vscode-markdownlint
+  - bierner.markdown-mermaid
+  - mermaidchart.vscode-mermaid-chart
+  - tomoki1207.pdf
+
+  # UI / Productivity
+  - pkief.material-icon-theme
+  - ionutvmi.spacegray-vscode
+  - gruntfuggly.todo-tree
+  - mohammadbaqer.better-folding
+  - mechatroner.rainbow-csv
+  - alefragnani.project-manager
+
+  # Tools
+  - hverlin.mise-vscode
+  - atlassian.atlascode
+  - tempo.tempotimetracking
+  - george-alisson.html-preview-vscode
+  - aliariff.vscode-erb-beautify

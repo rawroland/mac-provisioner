@@ -1,0 +1,93 @@
+{
+  "workbench.colorTheme": "Spinel",
+  "workbench.iconTheme": "material-icon-theme",
+  "files.autoSave": "afterDelay",
+  "git.autofetch": true,
+  "diffEditor.renderSideBySide": false,
+
+  "editor.tokenColorCustomizations": {
+    "[Default Dark Modern]": {
+      "textMateRules": [
+        {
+          "scope": "punctuation.definition.list.begin.markdown",
+          "settings": {
+            "foreground": "#777"
+          }
+        }
+      ]
+    }
+  },
+
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "other": false,
+      "comments": false,
+      "strings": false
+    },
+    "editor.fontFamily": "Fira Sans",
+    "editor.wrappingStrategy": "advanced",
+    "editor.fontSize": 13,
+    "editor.lineHeight": 1.5,
+    "editor.cursorBlinking": "phase",
+    "editor.lineNumbers": "off",
+    "editor.indentSize": "tabSize",
+    "editor.tabSize": 6,
+    "editor.insertSpaces": false,
+    "editor.autoClosingBrackets": "never",
+    "editor.bracketPairColorization.enabled": false,
+    "editor.matchBrackets": "never",
+    "editor.guides.indentation": false,
+    "editor.padding.top": 20
+  },
+
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    ".claude/rules": true,
+    "~/.copilot/instructions": true,
+    "~/.claude/rules": true
+  },
+
+  "database-client.autoSync": true,
+  "docker.extension.enableComposeLanguageServer": false,
+  "makefile.configureOnOpen": true,
+  "atlascode.jira.enabled": true,
+  "atlascode.jira.lastCreatePreSelectedValues": {
+    "siteId": "13a5d8cd-3071-4a05-b355-a508ca5a841f",
+    "projectKey": "PAUI",
+    "issueTypeId": "3"
+  },
+
+  "mise.binPath": "{{ ansible_env.HOME }}/.local/bin/mise",
+  "dart.flutterSdkPath": "{{ ansible_env.HOME }}/flutter-sdk/flutter",
+  "claudeCode.preferredLocation": "panel"
+}
