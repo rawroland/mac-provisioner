@@ -14,5 +14,16 @@
 - name: Install VS Code extensions
   command: "{{ brew_prefix }}/bin/code --install-extension {{ item }}"
   loop: "{{ vscode_extensions }}"
+  loop_control:
+    label: "{{ item }}"
   register: ext_result
   changed_when: "'already installed' not in ext_result.stdout"
+  failed_when: false
+
+- name: Warn about VS Code extensions that failed to install
+  debug:
+    msg: "Failed to install extension {{ item.item }}: {{ item.stderr | default('unknown error') }}"
+  loop: "{{ ext_result.results }}"
+  loop_control:
+    label: "{{ item.item }}"
+  when: item.rc != 0

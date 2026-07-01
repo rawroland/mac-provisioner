@@ -59,7 +59,6 @@ vscode_extensions:
   - nefrob.vscode-just-syntax
 
   # Frameworks
-  - aki77.rails-db-schema
   - thenouillet.symfony-vscode
   - whatwedo.twig
   - stanislav.vscode-drupal
