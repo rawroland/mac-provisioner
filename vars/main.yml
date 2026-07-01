@@ -26,8 +26,8 @@ homebrew_formulae:
 homebrew_casks:
   - iterm2
   - font-meslo-lg-s-nerd-font
+  - visual-studio-code
 #  - warp
-#  - visual-studio-code
 
 # Colima (Docker) resources
 colima_cpu: 4
