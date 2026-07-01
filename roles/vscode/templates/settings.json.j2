@@ -87,7 +87,7 @@
     "issueTypeId": "3"
   },
 
-  "mise.binPath": "{{ ansible_env.HOME }}/.local/bin/mise",
-  "dart.flutterSdkPath": "{{ ansible_env.HOME }}/flutter-sdk/flutter",
+  "mise.binPath": "{{ ansible_facts.env.HOME }}/.local/bin/mise",
+  "dart.flutterSdkPath": "{{ ansible_facts.env.HOME }}/flutter-sdk/flutter",
   "claudeCode.preferredLocation": "panel"
 }

@@ -1,7 +1,7 @@
 ---
 - name: Check if oh-my-zsh is installed
   stat:
-    path: "{{ ansible_env.HOME }}/.oh-my-zsh"
+    path: "{{ ansible_facts.env.HOME }}/.oh-my-zsh"
   register: omz_stat
 
 - name: Install oh-my-zsh
@@ -12,21 +12,21 @@
 - name: Clone zsh-autosuggestions plugin
   git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
-    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    dest: "{{ ansible_facts.env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
     depth: 1
     update: false
 
 - name: Clone zsh-syntax-highlighting plugin
   git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting
-    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    dest: "{{ ansible_facts.env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
     depth: 1
     update: false
 
 - name: Back up existing .zshrc if not already backed up
   copy:
-    src: "{{ ansible_env.HOME }}/.zshrc"
-    dest: "{{ ansible_env.HOME }}/.zshrc.bak"
+    src: "{{ ansible_facts.env.HOME }}/.zshrc"
+    dest: "{{ ansible_facts.env.HOME }}/.zshrc.bak"
     remote_src: true
     force: false
   failed_when: false
@@ -34,5 +34,5 @@
 - name: Template .zshrc
   template:
     src: zshrc.j2
-    dest: "{{ ansible_env.HOME }}/.zshrc"
+    dest: "{{ ansible_facts.env.HOME }}/.zshrc"
     mode: "0644"

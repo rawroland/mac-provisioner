@@ -1,5 +1,5 @@
 # Managed by ansible mac-provisioner — edit roles/dev_tools/templates/zshrc.j2, not this file
-export ZSH="{{ ansible_env.HOME }}/.oh-my-zsh"
+export ZSH="{{ ansible_facts.env.HOME }}/.oh-my-zsh"
 ZSH_THEME=""
 
 plugins=({{ ohmyzsh_plugins | join(' ') }})
@@ -7,7 +7,7 @@ plugins=({{ ohmyzsh_plugins | join(' ') }})
 source $ZSH/oh-my-zsh.sh
 
 # PATH — Homebrew, GNU tools first
-export PATH="{{ ansible_env.HOME }}/.local/bin:{{ brew_prefix }}/opt/gnu-sed/libexec/gnubin:{{ brew_prefix }}/opt/coreutils/libexec/gnubin:{{ brew_prefix }}/bin:/usr/local/bin:$PATH"
+export PATH="{{ ansible_facts.env.HOME }}/.local/bin:{{ brew_prefix }}/opt/gnu-sed/libexec/gnubin:{{ brew_prefix }}/opt/coreutils/libexec/gnubin:{{ brew_prefix }}/bin:/usr/local/bin:$PATH"
 
 # Pure prompt (installed via brew)
 fpath+=("{{ brew_prefix }}/share/zsh/site-functions")
@@ -15,10 +15,10 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # mise — language version manager
-eval "$({{ ansible_env.HOME }}/.local/bin/mise activate zsh)"
+eval "$({{ ansible_facts.env.HOME }}/.local/bin/mise activate zsh)"
 
 # Docker / Colima
-export DOCKER_HOST="unix://{{ ansible_env.HOME }}/.colima/default/docker.sock"
+export DOCKER_HOST="unix://{{ ansible_facts.env.HOME }}/.colima/default/docker.sock"
 
 # fzf
 [ -f "{{ brew_prefix }}/opt/fzf/shell/completion.zsh" ] && source "{{ brew_prefix }}/opt/fzf/shell/completion.zsh"

@@ -6,21 +6,21 @@
 
 - name: Create Alfred Application Support directory
   file:
-    path: "{{ ansible_env.HOME }}/Library/Application Support/Alfred"
+    path: "{{ ansible_facts.env.HOME }}/Library/Application Support/Alfred"
     state: directory
     mode: "0755"
 
 - name: Deploy Alfred preferences bundle
   copy:
     src: Alfred.alfredpreferences/
-    dest: "{{ ansible_env.HOME }}/Library/Application Support/Alfred/Alfred.alfredpreferences"
+    dest: "{{ ansible_facts.env.HOME }}/Library/Application Support/Alfred/Alfred.alfredpreferences"
     mode: preserve
 
 - name: Write Alfred prefs.json pointing to deployed bundle
   copy:
     content: |
       {
-        "current" : "{{ ansible_env.HOME }}/Library/Application Support/Alfred/Alfred.alfredpreferences"
+        "current" : "{{ ansible_facts.env.HOME }}/Library/Application Support/Alfred/Alfred.alfredpreferences"
       }
-    dest: "{{ ansible_env.HOME }}/Library/Application Support/Alfred/prefs.json"
+    dest: "{{ ansible_facts.env.HOME }}/Library/Application Support/Alfred/prefs.json"
     mode: "0644"

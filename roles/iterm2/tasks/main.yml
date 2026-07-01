@@ -1,12 +1,12 @@
 ---
 - name: Create iTerm2 DynamicProfiles directory
   file:
-    path: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles"
+    path: "{{ ansible_facts.env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles"
     state: directory
     mode: "0755"
 
 - name: Install iTerm2 dynamic profiles
   template:
     src: profile.json.j2
-    dest: "{{ ansible_env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles/mac-provisioner.json"
+    dest: "{{ ansible_facts.env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles/mac-provisioner.json"
     mode: "0644"

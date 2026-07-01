@@ -1,14 +1,14 @@
 ---
 - name: Create VS Code user settings directory
   file:
-    path: "{{ ansible_env.HOME }}/Library/Application Support/Code/User"
+    path: "{{ ansible_facts.env.HOME }}/Library/Application Support/Code/User"
     state: directory
     mode: "0755"
 
 - name: Deploy VS Code settings
   template:
     src: settings.json.j2
-    dest: "{{ ansible_env.HOME }}/Library/Application Support/Code/User/settings.json"
+    dest: "{{ ansible_facts.env.HOME }}/Library/Application Support/Code/User/settings.json"
     mode: "0644"
 
 - name: Install VS Code extensions

@@ -14,8 +14,8 @@
     <key>KeepAlive</key>
     <false/>
     <key>StandardOutPath</key>
-    <string>{{ ansible_env.HOME }}/Library/Logs/colima.log</string>
+    <string>{{ ansible_facts.env.HOME }}/Library/Logs/colima.log</string>
     <key>StandardErrorPath</key>
-    <string>{{ ansible_env.HOME }}/Library/Logs/colima.error.log</string>
+    <string>{{ ansible_facts.env.HOME }}/Library/Logs/colima.error.log</string>
 </dict>
 </plist>
