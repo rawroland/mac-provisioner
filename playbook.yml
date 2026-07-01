@@ -1,0 +1,21 @@
+---
+- name: Provision macOS developer machine
+  hosts: localhost
+  connection: local
+  become: false
+  gather_facts: true
+  vars_files:
+    - vars/main.yml
+
+  pre_tasks:
+    - name: Set Homebrew prefix
+      set_fact:
+        brew_prefix: "{{ '/opt/homebrew' if ansible_machine == 'arm64' else '/usr/local' }}"
+
+  roles:
+    - homebrew
+    - dev_tools
+    - colima
+    - mise
+    - kubernetes
+    - macos

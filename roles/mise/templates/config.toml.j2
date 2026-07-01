@@ -1,0 +1,4 @@
+[tools]
+{% for tool, version in mise_tools.items() %}
+{{ tool }} = "{{ version }}"
+{% endfor %}

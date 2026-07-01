@@ -1,0 +1,7 @@
+---
+macos_key_repeat: 2
+macos_initial_key_repeat: 15
+macos_show_hidden_files: true
+macos_show_all_extensions: true
+macos_screenshot_location: "~/Pictures/Screenshots"
+macos_dock_autohide: true

@@ -1,0 +1,43 @@
+---
+- name: Install Colima and Docker CLI tools
+  community.general.homebrew:
+    name:
+      - colima
+      - docker
+      - docker-compose
+    state: present
+    path: "{{ brew_prefix }}/bin"
+
+- name: Create Colima config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/colima/default"
+    state: directory
+    mode: "0755"
+
+- name: Template Colima config
+  template:
+    src: colima.yaml.j2
+    dest: "{{ ansible_env.HOME }}/.config/colima/default/colima.yaml"
+    mode: "0644"
+
+- name: Create LaunchAgents directory
+  file:
+    path: "{{ ansible_env.HOME }}/Library/LaunchAgents"
+    state: directory
+    mode: "0755"
+
+- name: Install Colima LaunchAgent for auto-start
+  template:
+    src: com.github.colima.plist.j2
+    dest: "{{ ansible_env.HOME }}/Library/LaunchAgents/com.github.colima.plist"
+    mode: "0644"
+
+- name: Check if Colima LaunchAgent is loaded
+  command: launchctl list com.github.colima
+  register: launchctl_check
+  failed_when: false
+  changed_when: false
+
+- name: Load Colima LaunchAgent
+  command: launchctl load -w "{{ ansible_env.HOME }}/Library/LaunchAgents/com.github.colima.plist"
+  when: launchctl_check.rc != 0

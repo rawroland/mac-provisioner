@@ -1,0 +1,72 @@
+---
+- name: Create Screenshots directory
+  file:
+    path: "{{ macos_screenshot_location }}"
+    state: directory
+    mode: "0755"
+
+- name: Set key repeat rate
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: KeyRepeat
+    type: int
+    value: "{{ macos_key_repeat }}"
+    state: present
+
+- name: Set initial key repeat delay
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: InitialKeyRepeat
+    type: int
+    value: "{{ macos_initial_key_repeat }}"
+    state: present
+
+- name: Show all file extensions
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleShowAllExtensions
+    type: bool
+    value: "{{ macos_show_all_extensions }}"
+    state: present
+
+- name: Show hidden files in Finder
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    type: bool
+    value: "{{ macos_show_hidden_files }}"
+    state: present
+
+- name: Disable .DS_Store on network volumes
+  community.general.osx_defaults:
+    domain: com.apple.desktopservices
+    key: DSDontWriteNetworkStores
+    type: bool
+    value: true
+    state: present
+
+- name: Set screenshot save location
+  community.general.osx_defaults:
+    domain: com.apple.screencapture
+    key: location
+    type: string
+    value: "{{ macos_screenshot_location }}"
+    state: present
+
+- name: Enable Dock auto-hide
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: "{{ macos_dock_autohide }}"
+    state: present
+
+- name: Restart Finder to apply changes
+  command: killall Finder
+  failed_when: false
+  changed_when: false
+
+- name: Restart Dock to apply changes
+  command: killall Dock
+  failed_when: false
+  changed_when: false

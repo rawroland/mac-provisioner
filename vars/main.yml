@@ -1,0 +1,49 @@
+---
+# Homebrew taps
+homebrew_taps: []
+
+# CLI tools and utilities
+homebrew_formulae:
+  - git
+  - gh
+  - jq
+  - yq
+  - fzf
+  - ripgrep
+  - bat
+  - fd
+  - htop
+  - wget
+  - tree
+  - gnu-sed
+  - coreutils
+  - pure
+  - neovim
+  - tmux
+  - ansible-lint
+
+# GUI apps — uncomment to enable
+homebrew_casks: []
+#  - warp
+#  - iterm2
+#  - visual-studio-code
+
+# Colima (Docker) resources
+colima_cpu: 4
+colima_memory: 8
+colima_disk: 60
+
+# mise language version manager
+mise_tools:
+  node: "lts"
+  python: "latest"
+  go: "latest"
+  rust: "latest"
+
+# macOS system preferences
+macos_key_repeat: 2
+macos_initial_key_repeat: 15
+macos_show_hidden_files: true
+macos_show_all_extensions: true
+macos_screenshot_location: "{{ ansible_env.HOME }}/Pictures/Screenshots"
+macos_dock_autohide: true

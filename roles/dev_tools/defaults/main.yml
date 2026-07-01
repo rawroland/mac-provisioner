@@ -1,0 +1,9 @@
+---
+ohmyzsh_plugins:
+  - git
+  - docker
+  - mise
+  - kubectl
+  - helm
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting

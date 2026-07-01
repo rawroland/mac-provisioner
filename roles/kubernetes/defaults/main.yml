@@ -1,0 +1,6 @@
+---
+kubernetes_tools:
+  - kubectl
+  - helm
+  - k9s
+  - kubectx

@@ -1,0 +1,6 @@
+---
+mise_tools:
+  node: "lts"
+  python: "latest"
+  go: "latest"
+  rust: "latest"

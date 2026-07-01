@@ -1,0 +1,6 @@
+---
+- name: Install Kubernetes tools
+  community.general.homebrew:
+    name: "{{ kubernetes_tools }}"
+    state: present
+    path: "{{ brew_prefix }}/bin"

@@ -1,0 +1,20 @@
+---
+- name: Create mise config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/mise"
+    state: directory
+    mode: "0755"
+
+- name: Template mise global config
+  template:
+    src: config.toml.j2
+    dest: "{{ ansible_env.HOME }}/.config/mise/config.toml"
+    mode: "0644"
+
+- name: Install mise tools
+  command: "{{ brew_prefix }}/bin/mise install --yes"
+  environment:
+    HOME: "{{ ansible_env.HOME }}"
+    PATH: "{{ brew_prefix }}/bin:{{ ansible_env.PATH }}"
+  register: mise_install
+  changed_when: "'installed' in mise_install.stdout or mise_install.stdout != ''"

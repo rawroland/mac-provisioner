@@ -1,0 +1,25 @@
+# Managed by ansible mac-provisioner — edit roles/dev_tools/templates/zshrc.j2, not this file
+export ZSH="{{ ansible_env.HOME }}/.oh-my-zsh"
+ZSH_THEME=""
+
+plugins=({{ ohmyzsh_plugins | join(' ') }})
+
+source $ZSH/oh-my-zsh.sh
+
+# PATH — Homebrew, GNU tools first
+export PATH="{{ brew_prefix }}/opt/gnu-sed/libexec/gnubin:{{ brew_prefix }}/opt/coreutils/libexec/gnubin:{{ brew_prefix }}/bin:/usr/local/bin:$PATH"
+
+# Pure prompt (installed via brew)
+fpath+=("{{ brew_prefix }}/share/zsh/site-functions")
+autoload -U promptinit; promptinit
+prompt pure
+
+# mise — language version manager
+eval "$({{ brew_prefix }}/bin/mise activate zsh)"
+
+# Docker / Colima
+export DOCKER_HOST="unix://{{ ansible_env.HOME }}/.colima/default/docker.sock"
+
+# fzf
+[ -f "{{ brew_prefix }}/opt/fzf/shell/completion.zsh" ] && source "{{ brew_prefix }}/opt/fzf/shell/completion.zsh"
+[ -f "{{ brew_prefix }}/opt/fzf/shell/key-bindings.zsh" ] && source "{{ brew_prefix }}/opt/fzf/shell/key-bindings.zsh"

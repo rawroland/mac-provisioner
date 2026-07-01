@@ -1,0 +1,36 @@
+---
+- name: Check if Homebrew is installed
+  stat:
+    path: "{{ brew_prefix }}/bin/brew"
+  register: brew_stat
+
+- name: Install Homebrew
+  shell: |
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  when: not brew_stat.stat.exists
+
+- name: Update Homebrew
+  community.general.homebrew:
+    update_homebrew: true
+    path: "{{ brew_prefix }}/bin"
+  changed_when: false
+
+- name: Add Homebrew taps
+  community.general.homebrew_tap:
+    name: "{{ item }}"
+    state: present
+    path: "{{ brew_prefix }}/bin"
+  loop: "{{ homebrew_taps }}"
+
+- name: Install Homebrew formulae
+  community.general.homebrew:
+    name: "{{ homebrew_formulae }}"
+    state: present
+    path: "{{ brew_prefix }}/bin"
+
+- name: Install Homebrew casks
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ homebrew_casks }}"
+  when: homebrew_casks | length > 0
