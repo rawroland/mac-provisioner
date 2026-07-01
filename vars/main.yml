@@ -25,6 +25,7 @@ homebrew_formulae:
 # GUI apps
 homebrew_casks:
   - iterm2
+  - font-meslo-lg-s-nerd-font
 #  - warp
 #  - visual-studio-code
 
