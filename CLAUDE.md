@@ -18,6 +18,7 @@ All user-facing configuration lives in **`vars/main.yml`**. Edit that file, not 
 
 | Setting | How to change |
 |---|---|
+| Update Alfred config | Re-export from Alfred, then `cp -r ~/Library/Application\ Support/Alfred/Alfred.alfredpreferences roles/alfred/files/` |
 | Add a CLI tool | Append to `homebrew_formulae` in `vars/main.yml` |
 | Add a GUI app | Append to `homebrew_casks` in `vars/main.yml` |
 | Change runtime version | Edit `mise_tools.<lang>` in `vars/main.yml` |
@@ -34,7 +35,8 @@ roles/
 ├── mise/         — Language version manager + runtime installs
 ├── kubernetes/   — kubectl, helm, k9s, kubectx
 ├── macos/        — macOS system preferences via `defaults write`
-└── iterm2/       — iTerm2 Dynamic Profile (green-on-black) + shell integration
+├── iterm2/       — iTerm2 Dynamic Profile (green-on-black) + shell integration
+└── alfred/       — Alfred install + preferences bundle from this machine
 ```
 
 ## Key Design Notes

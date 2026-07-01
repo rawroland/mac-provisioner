@@ -1,0 +1,4 @@
+---
+# Alfred preferences are bundled in files/Alfred.alfredpreferences/
+# Re-export from Alfred → Preferences → Advanced → Set Preferences Folder
+# then run: cp -r ~/Library/Application\ Support/Alfred/Alfred.alfredpreferences roles/alfred/files/
