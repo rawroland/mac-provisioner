@@ -22,10 +22,10 @@ homebrew_formulae:
   - tmux
   - ansible-lint
 
-# GUI apps — uncomment to enable
-homebrew_casks: []
+# GUI apps
+homebrew_casks:
+  - iterm2
 #  - warp
-#  - iterm2
 #  - visual-studio-code
 
 # Colima (Docker) resources

@@ -23,3 +23,6 @@ export DOCKER_HOST="unix://{{ ansible_env.HOME }}/.colima/default/docker.sock"
 # fzf
 [ -f "{{ brew_prefix }}/opt/fzf/shell/completion.zsh" ] && source "{{ brew_prefix }}/opt/fzf/shell/completion.zsh"
 [ -f "{{ brew_prefix }}/opt/fzf/shell/key-bindings.zsh" ] && source "{{ brew_prefix }}/opt/fzf/shell/key-bindings.zsh"
+
+# iTerm2 shell integration (command notifications, marks, utilities)
+[ -f "$HOME/.iterm2_shell_integration.zsh" ] && source "$HOME/.iterm2_shell_integration.zsh"

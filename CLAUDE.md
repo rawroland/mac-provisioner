@@ -33,7 +33,8 @@ roles/
 ├── colima/       — Docker runtime (Colima), LaunchAgent for auto-start
 ├── mise/         — Language version manager + runtime installs
 ├── kubernetes/   — kubectl, helm, k9s, kubectx
-└── macos/        — macOS system preferences via `defaults write`
+├── macos/        — macOS system preferences via `defaults write`
+└── iterm2/       — iTerm2 Dynamic Profile (green-on-black) + shell integration
 ```
 
 ## Key Design Notes
