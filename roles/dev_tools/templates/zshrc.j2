@@ -7,7 +7,7 @@ plugins=({{ ohmyzsh_plugins | join(' ') }})
 source $ZSH/oh-my-zsh.sh
 
 # PATH — Homebrew, GNU tools first
-export PATH="{{ brew_prefix }}/opt/gnu-sed/libexec/gnubin:{{ brew_prefix }}/opt/coreutils/libexec/gnubin:{{ brew_prefix }}/bin:/usr/local/bin:$PATH"
+export PATH="{{ ansible_env.HOME }}/.local/bin:{{ brew_prefix }}/opt/gnu-sed/libexec/gnubin:{{ brew_prefix }}/opt/coreutils/libexec/gnubin:{{ brew_prefix }}/bin:/usr/local/bin:$PATH"
 
 # Pure prompt (installed via brew)
 fpath+=("{{ brew_prefix }}/share/zsh/site-functions")
@@ -15,7 +15,7 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # mise — language version manager
-eval "$({{ brew_prefix }}/bin/mise activate zsh)"
+eval "$({{ ansible_env.HOME }}/.local/bin/mise activate zsh)"
 
 # Docker / Colima
 export DOCKER_HOST="unix://{{ ansible_env.HOME }}/.colima/default/docker.sock"
