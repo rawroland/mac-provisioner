@@ -4,3 +4,4 @@ mise_tools:
   python: "latest"
   go: "latest"
   rust: "latest"
+  usage: "latest"

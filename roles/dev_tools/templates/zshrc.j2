@@ -23,3 +23,6 @@ export DOCKER_HOST="unix://{{ ansible_facts.env.HOME }}/.colima/default/docker.s
 # fzf
 [ -f "{{ brew_prefix }}/opt/fzf/shell/completion.zsh" ] && source "{{ brew_prefix }}/opt/fzf/shell/completion.zsh"
 [ -f "{{ brew_prefix }}/opt/fzf/shell/key-bindings.zsh" ] && source "{{ brew_prefix }}/opt/fzf/shell/key-bindings.zsh"
+
+# zoxide
+eval "$(zoxide init zsh)"

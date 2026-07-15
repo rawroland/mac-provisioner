@@ -21,12 +21,15 @@ homebrew_formulae:
   - neovim
   - tmux
   - ansible-lint
+  - zoxide
 
 # GUI apps
 homebrew_casks:
   - iterm2
   - font-meslo-lg-nerd-font
   - visual-studio-code
+  - google-chrome
+  - firefox
 #  - warp
 
 # Colima (Docker) resources

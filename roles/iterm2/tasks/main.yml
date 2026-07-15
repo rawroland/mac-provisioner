@@ -10,3 +10,11 @@
     src: profile.json.j2
     dest: "{{ ansible_facts.env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles/mac-provisioner.json"
     mode: "0644"
+
+- name: Set green-on-black profile as the iTerm2 default
+  community.general.osx_defaults:
+    domain: com.googlecode.iterm2
+    key: "Default Bookmark Guid"
+    type: string
+    value: "74C57251-483C-467E-B583-7F065A1A9E8D"
+    state: present
