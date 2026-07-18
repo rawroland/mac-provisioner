@@ -10,7 +10,7 @@ make check        # dry-run (no changes applied)
 make lint         # run ansible-lint
 ```
 
-`make install` handles its own bootstrap: installs Homebrew if missing, installs Ansible via brew, then installs Ansible Galaxy collections from `requirements.yml` before running the playbook.
+`make install` handles its own bootstrap: installs Homebrew if missing, installs pipx via brew, installs Ansible via `pipx install --include-deps ansible` (brew's Ansible formula lags upstream), then installs Ansible Galaxy collections from `requirements.yml` before running the playbook.
 
 ## Customization
 

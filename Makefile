@@ -6,9 +6,10 @@ else
 endif
 
 BREW         := $(BREW_PREFIX)/bin/brew
-ANSIBLE      := $(BREW_PREFIX)/bin/ansible-playbook
+PIPX         := $(BREW_PREFIX)/bin/pipx
+ANSIBLE      := $(HOME)/.local/bin/ansible-playbook
 ANSIBLE_LINT := $(BREW_PREFIX)/bin/ansible-lint
-GALAXY       := $(BREW_PREFIX)/bin/ansible-galaxy
+GALAXY       := $(HOME)/.local/bin/ansible-galaxy
 
 .PHONY: install check lint bootstrap
 
@@ -28,8 +29,13 @@ bootstrap:
 		echo "Installing Homebrew..."; \
 		/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
 	fi
-	@if [ ! -f "$(BREW_PREFIX)/bin/ansible" ]; then \
-		echo "Installing Ansible via Homebrew..."; \
-		$(BREW) install ansible; \
+	@if [ ! -f "$(PIPX)" ]; then \
+		echo "Installing pipx via Homebrew..."; \
+		$(BREW) install pipx; \
+		$(PIPX) ensurepath; \
+	fi
+	@if [ ! -f "$(ANSIBLE)" ]; then \
+		echo "Installing Ansible via pipx..."; \
+		$(PIPX) install --include-deps ansible; \
 	fi
 	@$(GALAXY) collection install -r requirements.yml --upgrade
