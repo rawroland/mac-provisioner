@@ -98,7 +98,5 @@ vscode_extensions:
 
   # Tools
   - hverlin.mise-vscode
-  - atlassian.atlascode
-  - tempo.tempotimetracking
   - george-alisson.html-preview-vscode
   - aliariff.vscode-erb-beautify

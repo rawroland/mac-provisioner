@@ -8,16 +8,16 @@
     state: present
     path: "{{ brew_prefix }}/bin"
 
-- name: Create Colima config directory
+- name: Create Colima template directory
   file:
-    path: "{{ ansible_facts.env.HOME }}/.config/colima/default"
+    path: "{{ ansible_facts.env.HOME }}/.colima/_templates"
     state: directory
     mode: "0755"
 
 - name: Template Colima config
   template:
     src: colima.yaml.j2
-    dest: "{{ ansible_facts.env.HOME }}/.config/colima/default/colima.yaml"
+    dest: "{{ ansible_facts.env.HOME }}/.colima/_templates/default.yaml"
     mode: "0644"
 
 - name: Create LaunchAgents directory
