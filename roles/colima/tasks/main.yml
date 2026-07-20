@@ -5,8 +5,37 @@
       - colima
       - docker
       - docker-compose
+      - docker-buildx
     state: present
     path: "{{ brew_prefix }}/bin"
+
+- name: Create Docker config directory
+  file:
+    path: "{{ ansible_facts.env.HOME }}/.docker"
+    state: directory
+    mode: "0755"
+
+- name: Check if Docker config.json exists
+  stat:
+    path: "{{ ansible_facts.env.HOME }}/.docker/config.json"
+  register: docker_config_stat
+
+- name: Read existing Docker config.json
+  slurp:
+    src: "{{ ansible_facts.env.HOME }}/.docker/config.json"
+  register: docker_config_raw
+  when: docker_config_stat.stat.exists
+
+- name: Register Docker buildx CLI plugin directory
+  copy:
+    content: >-
+      {{
+        (docker_config_stat.stat.exists | ternary(docker_config_raw.content | b64decode | from_json, {}))
+        | combine({'cliPluginsExtraDirs': [brew_prefix + '/lib/docker/cli-plugins']})
+        | to_nice_json
+      }}
+    dest: "{{ ansible_facts.env.HOME }}/.docker/config.json"
+    mode: "0644"
 
 - name: Create Colima template directory
   file:
