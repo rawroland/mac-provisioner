@@ -33,7 +33,7 @@ All user-facing configuration lives in **`vars/main.yml`**. Edit that file, not 
 roles/
 ├── homebrew/     — Homebrew installation and all package installs
 ├── dev_tools/    — oh-my-zsh, pure prompt, zsh plugins, ~/.zshrc template
-├── colima/       — Docker runtime (Colima), LaunchAgent for auto-start
+├── colima/       — Docker runtime (Colima), started with resources from vars/main.yml
 ├── mise/         — Language version manager + runtime installs
 ├── kubernetes/   — kubectl, helm, k9s, kubectx
 ├── macos/        — macOS system preferences via `defaults write`
@@ -47,7 +47,7 @@ roles/
 - **Idempotent**: every task checks state before acting; safe to re-run at any time
 - **Apple Silicon + Intel**: `brew_prefix` is auto-detected in `playbook.yml` pre_tasks and available to all roles
 - **`~/.zshrc` is fully managed**: edit `roles/dev_tools/templates/zshrc.j2` to change shell config — manual edits to `~/.zshrc` will be overwritten on next run (original is backed up to `~/.zshrc.bak`)
-- **Colima auto-starts** on login via `~/Library/LaunchAgents/com.github.colima.plist`
+- **Colima is started directly by the playbook** (`colima start --cpu/--memory/--disk` from `vars/main.yml`); it does not auto-start on login
 - **Docker socket**: `DOCKER_HOST` points to `~/.colima/default/docker.sock`; no Docker Desktop required
 
 ## Adding a New Role

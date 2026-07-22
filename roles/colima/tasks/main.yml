@@ -37,36 +37,18 @@
     dest: "{{ ansible_facts.env.HOME }}/.docker/config.json"
     mode: "0644"
 
-- name: Create Colima template directory
-  file:
-    path: "{{ ansible_facts.env.HOME }}/.colima/_templates"
-    state: directory
-    mode: "0755"
-
-- name: Template Colima config
-  template:
-    src: colima.yaml.j2
-    dest: "{{ ansible_facts.env.HOME }}/.colima/_templates/default.yaml"
-    mode: "0644"
-
-- name: Create LaunchAgents directory
-  file:
-    path: "{{ ansible_facts.env.HOME }}/Library/LaunchAgents"
-    state: directory
-    mode: "0755"
-
-- name: Install Colima LaunchAgent for auto-start
-  template:
-    src: com.github.colima.plist.j2
-    dest: "{{ ansible_facts.env.HOME }}/Library/LaunchAgents/com.github.colima.plist"
-    mode: "0644"
-
-- name: Check if Colima LaunchAgent is loaded
-  command: launchctl list com.github.colima
-  register: launchctl_check
+- name: Check if Colima is running
+  command: "{{ brew_prefix }}/bin/colima status"
+  register: colima_status
   failed_when: false
   changed_when: false
 
-- name: Load Colima LaunchAgent
-  command: launchctl load -w "{{ ansible_facts.env.HOME }}/Library/LaunchAgents/com.github.colima.plist"
-  when: launchctl_check.rc != 0
+- name: Start Colima
+  command: >-
+    {{ brew_prefix }}/bin/colima start
+    --cpu {{ colima_cpu }}
+    --memory {{ colima_memory }}
+    --disk {{ colima_disk }}
+    --arch host
+    --runtime docker
+  when: colima_status.rc != 0
